@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../utils/world_time.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class loading extends StatefulWidget{
   @override
@@ -21,6 +22,7 @@ class loadingstate extends State<loading>{
       "location":worldtime.location,
       "flag":worldtime.flag,
       "time":worldtime.time,
+      "now":worldtime.day,
     });
 
 
@@ -36,8 +38,19 @@ class loadingstate extends State<loading>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBar(title: Text("loading"),centerTitle: true,),
-      body:SafeArea(child: Center(child: Text("loading time.... "))),
+      backgroundColor: Colors.black,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SpinKitPouringHourGlassRefined(
+              color: Colors.lightGreen,
+              size: 50.0,
+            ),
+            Text("Fetching time",style: TextStyle(color:Colors.lightGreen,fontSize: 30.0),)
+          ],
+        )
+      ),
     );
   }
 }
